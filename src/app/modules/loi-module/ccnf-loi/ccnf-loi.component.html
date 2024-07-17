@@ -1,0 +1,1237 @@
+<div class="notification-text" *ngIf="successNotification">
+  <div class="green-text">Agency Data is Saved!</div>
+</div>
+<div class="notification-text" *ngIf="failureNotification">
+  <div class="red-text">Agency Data is not Saved!</div>
+</div>
+<div class="search-panel">
+  <div class="loi-list-button">
+    <button class="llbtn">
+      <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="18px" fill="#fff200">
+        <path
+          d="M288-600v-72h528v72H288Zm0 156v-72h528v72H288Zm0 156v-72h528v72H288ZM180-600q-14 0-25-11t-11-25.5q0-14.5 11-25t25.5-10.5q14.5 0 25 10.35T216-636q0 14-10.35 25T180-600Zm0 156q-14 0-25-11t-11-25.5q0-14.5 11-25t25.5-10.5q14.5 0 25 10.35T216-480q0 14-10.35 25T180-444Zm0 156q-14 0-25-11t-11-25.5q0-14.5 11-25t25.5-10.5q14.5 0 25 10.35T216-324q0 14-10.35 25T180-288Z" />
+      </svg>
+      LOI List
+    </button>
+  </div>
+  <app-spinner-component></app-spinner-component>
+  <mat-tab-group [selectedIndex]="selectedTab.value" (selectedIndexChange)="selectedTab.setValue($event)">
+    <mat-tab label="Agency" id="style-2">
+      <form [formGroup]="agencyForm" class="search-box margin-bottom-20px">
+        <div class="row">
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Vendor Code" formControlName="agency_vendor">
+                <mat-option value="Vendor Code 1"> Vendor Code 1 </mat-option>
+                <mat-option value="Vendor Code 2"> Vendor Code 2 </mat-option>
+                <mat-option value="Vendor Code 3"> Vendor Code 3 </mat-option>
+              </mat-select>
+              <span class="text-danger error-message"
+                *ngIf="(agencyForm.controls['agency_vendor'].touched) && agencyForm.controls['agency_vendor'].errors?.['required']">
+                Vendor is required
+              </span>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Agency Name" formControlName="agency_agencyName">
+                <mat-option value="Agency Name 1"> Agency Name 1 </mat-option>
+                <mat-option value="Agency Name 2"> Agency Name 2 </mat-option>
+                <mat-option value="Agency Name 3"> Agency Name 3 </mat-option>
+              </mat-select>
+              <span class="text-danger error-message"
+                *ngIf="(agencyForm.controls['agency_agencyName'].touched) && agencyForm.controls['agency_agencyName'].errors?.['required']">
+                Name is required
+              </span>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="State" formControlName="agency_state">
+                <mat-option value="State 1"> State 1 </mat-option>
+                <mat-option value="State 2"> State 2 </mat-option>
+                <mat-option value="State 3"> State 3 </mat-option>
+              </mat-select>
+              <span class="text-danger error-message"
+                *ngIf="(agencyForm.controls['agency_state'].touched) && agencyForm.controls['agency_state'].errors?.['required']">
+                State is required
+              </span>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Region" formControlName="agency_region">
+                <mat-option value="Region 1"> Region 1 </mat-option>
+                <mat-option value="Region 2"> Region 2 </mat-option>
+                <mat-option value="Region 3"> Region 3 </mat-option>
+                <mat-option value="Region 4"> Region 4 </mat-option>
+              </mat-select>
+              <span class="text-danger error-message"
+                *ngIf="(agencyForm.controls['agency_region'].touched) && agencyForm.controls['agency_region'].errors?.['required']">
+                Region is required
+              </span>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Depot" formControlName="agency_depot">
+                <mat-option value="Depot 1"> Depot 1 </mat-option>
+                <mat-option value="Depot 2"> Depot 2 </mat-option>
+                <mat-option value="Depot 3"> Depot 3 </mat-option>
+                <mat-option value="Depot 4"> Depot 4 </mat-option>
+              </mat-select>
+              <span class="text-danger error-message"
+                *ngIf="(agencyForm.controls['agency_depot'].touched) && agencyForm.controls['agency_depot'].errors?.['required']">
+                Depot is required
+              </span>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="District" formControlName="agency_district">
+                <mat-option value="District 1"> District 1 </mat-option>
+                <mat-option value="District 2"> District 2 </mat-option>
+                <mat-option value="District 3"> District 3 </mat-option>
+                <mat-option value="District 4"> District 4 </mat-option>
+              </mat-select>
+              <span class="text-danger error-message"
+                *ngIf="(agencyForm.controls['agency_district'].touched) && agencyForm.controls['agency_district'].errors?.['required']">
+                District is required
+              </span>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <hr />
+      <div class="button-holder">
+        <div class="btn-left-section">&nbsp;</div>
+
+        <div class="btn-right-section">
+          <div class="buttons loi-btns" *ngIf="!isDataSaved.isAgencyDataSaved">
+            <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true; saveAgency()"
+              [disabled]="!agencyForm.valid">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#fff200">
+                <path
+                  d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z" />
+              </svg>
+              Save as Draft
+            </button>
+            <button class="save-next-prev" (click)="saveMoveToNext('agency')">
+              Save & Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+          <div class="buttons" *ngIf="isDataSaved.isAgencyDataSaved">
+            <div class="data-saved">Agency data is already saved!</div>
+            <button class="save-next-prev" (click)="goToNextTab()">
+              Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Agent and Agreement Details">
+      <form [formGroup]="agreementForm" class="search-box-agent">
+        <div class="ccnf-address">
+          <div class="ccnf-address-sec">
+            <div class="ccnf-address-tittle">Vendor Code</div>
+            <div class="ccnf-address-text">{{agreementDetails.vendorCode}}</div>
+          </div>
+
+          <div class="ccnf-address-sec">
+            <div class="ccnf-address-tittle">Address</div>
+            <div class="ccnf-address-text">{{agreementDetails.address}}</div>
+          </div>
+
+          <div class="ccnf-address-sec">
+            <div class="ccnf-address-tittle">City</div>
+            <div class="ccnf-address-text">{{agreementDetails.city}}</div>
+          </div>
+
+          <div class="ccnf-address-sec">
+            <div class="ccnf-address-tittle">Pincode</div>
+            <div class="ccnf-address-text">{{agreementDetails.pincode}}</div>
+          </div>
+
+          <div class="ccnf-address-sec left-border-grey">
+            <div class="ccnf-address-tittle">Vendor GST No.</div>
+            <div class="ccnf-address-text">{{agreementDetails.vendorGSTNo}}</div>
+          </div>
+
+          <div class="ccnf-address-sec">
+            <div class="ccnf-address-tittle">Vendor PAN</div>
+            <div class="ccnf-address-text">{{agreementDetails.vendorPAN}}</div>
+          </div>
+
+          <div class="ccnf-address-sec left-border-grey">
+            <div class="ccnf-address-tittle">Storage Location Name</div>
+            <div class="ccnf-address-text">{{agreementDetails.storageLocationName}}</div>
+          </div>
+
+          <div class="ccnf-address-sec">
+            <div class="ccnf-address-tittle">SLOC Code</div>
+            <div class="ccnf-address-text">{{agreementDetails.slocCode}}</div>
+          </div>
+        </div>
+
+
+
+        <div class="left-align-flex border-bottom margin-bottom-20px padding-bottom-15px">
+          <div class="row">
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 agreement-date-picker-holder">
+              <div class="ccnf-address-tittle">Agreement Period</div>
+              <mat-form-field class="agreement-date-picker">
+                <mat-label>Start date</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="agreement_startDate" />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+
+              </mat-form-field>
+              <span class="text-danger error-message"
+                *ngIf="(agreementForm.controls['agreement_startDate'].touched) && agreementForm.controls['agreement_startDate'].errors?.['required']">
+                Start date is required
+              </span>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12 agreement-date-picker-holder">
+              <div class="ccnf-address-tittle">&nbsp;</div>
+              <mat-form-field class="agreement-date-picker">
+                <mat-label>End date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="agreement_endDate" />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+
+              </mat-form-field>
+              <span class="text-danger error-message"
+                *ngIf="(agreementForm.controls['agreement_endDate'].touched) && agreementForm.controls['agreement_endDate'].errors?.['required']">
+                End date is required
+              </span>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <div class="ccnf-address-sec">
+                <div class="ccnf-address-tittle">Total Period</div>
+                <div class="ccnf-address-text">2 Years</div>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <div class="ccnf-address-tittle">Billing Cycle</div>
+
+              <div class="left-align-flex margin-bottom-20px padding-bottom-15px">
+                <!-- <form  class="search-box"> -->
+                <mat-form-field appearance="outline">
+                  <mat-select placeholder="Monthly" formControlName="agreement_billingCycle">
+                    <mat-option value="volvo"> Weekly </mat-option>
+                    <mat-option value="saab"> Fortnightly </mat-option>
+                    <!-- <mat-option value="opel"> Custom </mat-option> -->
+                  </mat-select>
+                  <span class="text-danger error-message"
+                    *ngIf="(agreementForm.controls['agreement_billingCycle'].touched) && agreementForm.controls['agreement_billingCycle'].errors?.['required']">
+                    Billing cycle is required
+                  </span>
+                </mat-form-field>
+
+                <!-- <mat-form-field>
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="picker3">
+            <-- <mat-hint>MM/DD/YYYY</mat-hint> --
+            <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field> -->
+                <!-- </form> -->
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <div class="ccnf-address-tittle">&nbsp;</div>
+              <div class="ccnf-address-text">
+                Monthly Cycle is from 1st of every month to last date of the
+                month
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-holder">
+          <div class="btn-left-section">
+            <!-- <button class="save-next-prev" (click)="moveToPrev()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="18px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#5f6368"
+              >
+                <path
+                  d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                />
+              </svg>
+              Previous
+            </button> -->
+          </div>
+
+          <div class="btn-right-section">
+            <div class="buttons loi-btns" *ngIf="!isDataSaved.isAgreementDataSaved">
+              <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true; saveAgreement()"
+                [disabled]="!agreementForm.valid">
+                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                  fill="#fff200">
+                  <path
+                    d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z" />
+                </svg>
+                Save as Draft
+              </button>
+              <button class="save-next-prev" (click)="saveMoveToNext('agreement')">
+                Save & Next
+                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                  fill="#5f6368">
+                  <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+                </svg>
+              </button>
+            </div>
+            <div class="buttons" *ngIf="isDataSaved.isAgreementDataSaved">
+              <div class="data-saved">Agreement data is already saved!</div>
+              <button class="save-next-prev" (click)="goToNextTab()">
+                Next
+                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                  fill="#5f6368">
+                  <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+
+    <mat-tab label="CCnF Commission">
+      <form [formGroup]="ccnfCommisionForm" class="search-box-agent">
+        <div class="slab-commission-sec">
+          <div class="slab-sec">
+            <div class="ccnf-address-tittle">Slab Wise Commision</div>
+
+            <div class="row commision-range">
+              <div class="col-lg-2 col-md-2">
+                Commision Range
+              </div>
+              <div class="col-lg-4 col-md-4">
+                <mat-form-field class="example-full-width ccnf-commission-number">
+                  <input matInput type="number" formControlName="ccnf_commisionRangeFrom" />
+                </mat-form-field>
+                <span class="text-danger error-message"
+                  *ngIf="(ccnfCommisionForm.controls['ccnf_commisionRangeFrom'].touched) && ccnfCommisionForm.controls['ccnf_commisionRangeFrom'].errors?.['required']">
+                  Commision range from is required
+                </span>
+              </div>
+              <div class="col-lg-1 col-md-1">
+                <span class="to">To</span>
+              </div>
+              <div class="col-lg-4 col-md-4 pr-0">
+                <mat-form-field class="example-full-width ccnf-commission-number">
+                  <input matInput type="number" formControlName="ccnf_commisionRangeTo" />
+                </mat-form-field>
+                <span class="text-danger error-message"
+                  *ngIf="(ccnfCommisionForm.controls['ccnf_commisionRangeTo'].touched) && ccnfCommisionForm.controls['ccnf_commisionRangeTo'].errors?.['required']">
+                  Commision range to is required
+                </span>
+              </div>
+            </div>
+
+
+            <div class="slab-fields-saved">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slab (MT)From</th>
+                    <th>Slab (MT)To</th>
+                    <th>Commission</th>
+                    <th class="width-50px">Add</th>
+                    <th class="width-50px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1000</td>
+                    <td>Rs. 25</td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-fab (click)="openLoiDetail()" class="add">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-mini-fab aria-label="Add Button" class="delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+          </div>
+
+          <div class="slab-sec padding-left-20px left-border-orange">
+            <div class="metro-commision">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Metro City Commission
+                </div>
+                <div class="slab-title-text">
+                  <mat-radio-group aria-label="Select an option" formControlName="ccnf_metroCityCommission">
+                    <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item commision-range">
+                <div class="slab-field-title width-200px">Commission Value</div>
+                <div class="slab-title-text padding-left-10px">
+                  <mat-form-field class="example-full-width width-125px ccnf-commission-number">
+                    <input matInput type="number" formControlName="ccnf_commissionValue" />
+                  </mat-form-field>
+                  <span class="text-danger error-message"
+                    *ngIf="(ccnfCommisionForm.controls['ccnf_commissionValue'].touched) && ccnfCommisionForm.controls['ccnf_commissionValue'].errors?.['required']">
+                    Commision Value is required
+                  </span>
+                </div>
+              </div>
+
+              <div class="metro-commision-item margin-top-15px">
+                <div class="slab-field-title width-200px align-item-center">
+                  Apply Minimum Commission
+                </div>
+                <div class="slab-title-text">
+                  <mat-radio-group aria-label="Select an option" formControlName="ccnf_applyMinimumCommission">
+                    <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+
+            <div class="row commision-range ">
+              <div class="col-lg-4 col-md-4 align-item-center margin">
+                Minimum Commission Slab
+              </div>
+              <div class="col-lg-6 col-md-6 pl-20">
+                <mat-form-field class="example-full-width ccnf-commission-number">
+                  <input matInput type="number" formControlName="ccnf_minimumCommissionSlab" />
+                </mat-form-field>
+
+                <span class="text-danger error-message"
+                  *ngIf="(ccnfCommisionForm.controls['ccnf_minimumCommissionSlab'].touched) && ccnfCommisionForm.controls['ccnf_minimumCommissionSlab'].errors?.['required']">
+                  Minimum Commission Slab
+                </span>
+              </div>
+            </div>
+
+            <div class="slab-fields-saved" style="margin-top: 20px;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slab (MT)From</th>
+                    <th>Slab (MT)To</th>
+                    <th>Commission</th>
+                    <th class="width-50px">Add</th>
+                    <th class="width-50px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1000</td>
+                    <td>Rs. 25</td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-fab (click)="openLoiDetail()" class="add">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-mini-fab aria-label="Add Button" class="delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="slab-commission-sec">
+          <div class="slab-sec">
+            <div class="metro-commission">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  GU/BT handled by CCnF?
+                </div>
+                <div class="slab-field-text">
+                  <mat-radio-group aria-label="Select an option" formControlName="ccnf_guBtHandledByCCnF">
+                    <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item commision-range">
+                <div class="slab-field-title width-200px">
+                  GU/BT Plant Code & Name
+                </div>
+                <div class="slab-field-text width-230px">
+                  <mat-form-field appearance="outline" class="width-200px">
+                    <mat-select placeholder="Plant Code" multiple formControlName="ccnf_guBtPlantCodeName">
+                      <mat-option value="Plant Code 1"> Plant Code 1 </mat-option>
+                      <mat-option value="Plant Code 2"> Plant Code 2 </mat-option>
+                      <mat-option value="Plant Code 3"> Plant Code 3 </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <span class="text-danger error-message" style="top: -15px;"
+                    *ngIf="(ccnfCommisionForm.controls['ccnf_guBtPlantCodeName'].touched) && ccnfCommisionForm.controls['ccnf_guBtPlantCodeName'].errors?.['required']">
+                    GU/BT Plant Code & Name is required
+                  </span>
+                </div>
+              </div>
+
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  GU/BT Plant Rate Type
+                </div>
+
+                <div class="multi-wrap">
+                  <div class="slab-field-text">
+                    <div class="plant-code">Plant 1 - code</div>
+                    <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                      <mat-select placeholder="Standard" formControlName="ccnf_plant1Code">
+                        <mat-option value="volvo"> Standard </mat-option>
+                        <mat-option value="saab"> Slab Based </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="slab-field-text">
+                    <div class="plant-code">Plant 2 - code</div>
+                    <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                      <mat-select placeholder="Standard" formControlName="ccnf_plant2Code">
+                        <mat-option value="volvo"> Standard </mat-option>
+                        <mat-option value="saab"> Slab Based </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="slab-field-text">
+                    <div class="plant-code">Plant 3 - code</div>
+                    <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                      <mat-select placeholder="Standard" formControlName="ccnf_plant3Code">
+                        <mat-option value="volvo"> Standard </mat-option>
+                        <mat-option value="saab"> Slab Based </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="slab-field-text">
+                    <div class="plant-code">Plant 4 - code</div>
+                    <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                      <mat-select placeholder="Standard" formControlName="ccnf_plant4Code">
+                        <mat-option value="volvo"> Standard </mat-option>
+                        <mat-option value="saab"> Slab Based </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+
+                </div>
+                <span class="text-danger error-message" style="margin-left:215px;top: -15px;"
+                  *ngIf="((ccnfCommisionForm.controls['ccnf_plant1Code'].touched) && ccnfCommisionForm.controls['ccnf_plant1Code'].errors?.['required'])
+                || ((ccnfCommisionForm.controls['ccnf_plant2Code'].touched) && ccnfCommisionForm.controls['ccnf_plant2Code'].errors?.['required'])
+                || ((ccnfCommisionForm.controls['ccnf_plant3Code'].touched) && ccnfCommisionForm.controls['ccnf_plant3Code'].errors?.['required'])
+                || ((ccnfCommisionForm.controls['ccnf_plant4Code'].touched) && ccnfCommisionForm.controls['ccnf_plant4Code'].errors?.['required'])">
+                  GU/BT Plant Code & Name is required
+                </span>
+              </div>
+
+              <div class="metro-commision-item commision-range">
+                <div class="slab-field-title width-200px">
+                  GU/BT plant Standard Commission
+                </div>
+                <div class="slab-field-text standard-commission">
+                  <mat-form-field class="example-full-width width-200px ccnf-commission-number">
+                    <input matInput type="number" formControlName="ccnf_guBtPlantStandardCommission" />
+                  </mat-form-field>
+                  <span class="text-danger error-message"
+                    *ngIf="(ccnfCommisionForm.controls['ccnf_guBtPlantStandardCommission'].touched) && ccnfCommisionForm.controls['ccnf_guBtPlantStandardCommission'].errors?.['required']">
+                    GU/BT plant Standard Commission is required
+                  </span>
+                </div>
+              </div>
+
+              <hr />
+
+              <div class="slab-field-title margin-top-15px">
+                GU/BT plant Slab Commission
+              </div>
+
+              <div class="slab-fields-saved">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Slab (MT)From</th>
+                      <th>Slab (MT)To</th>
+                      <th>Commission</th>
+                      <th class="width-50px">Add</th>
+                      <th class="width-50px">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>0</td>
+                      <td>1000</td>
+                      <td>Rs. 25</td>
+                      <td>
+                        <div class="add-button">
+                          <button mat-fab (click)="openLoiDetail()" class="add">
+                            <mat-icon>add</mat-icon>
+                          </button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="add-button">
+                          <button mat-mini-fab aria-label="Add Button" class="delete">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="slab-sec padding-left-20px left-border-orange">
+            <div class="metro-commission">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Inter Company Sale Applicable
+                </div>
+                <div class="slab-field-text">
+                  <mat-radio-group aria-label="Select an option" formControlName="ccnf_interCompanySaleApplicable">
+                    <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item commision-range">
+                <div class="slab-field-title width-200px">Commission</div>
+                <div class="slab-field-text">
+                  <mat-form-field class="example-full-width width-200px ccnf-commission-number">
+                    <input matInput type="number" formControlName="ccnf_Commission" />
+                  </mat-form-field>
+                  <span class="text-danger error-message"
+                    *ngIf="(ccnfCommisionForm.controls['ccnf_Commission'].touched) && ccnfCommisionForm.controls['ccnf_Commission'].errors?.['required']">
+                    Commision is required
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="metro-commission">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Inter Unit Sales Applicable
+                </div>
+                <div class="slab-field-text">
+                  <mat-radio-group aria-label="Select an option" formControlName="ccnf_interUnitSalesApplicable">
+                    <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item commision-range">
+                <div class="slab-field-title width-200px">
+                  Inter Unit Sales Commission
+                </div>
+                <div class="slab-field-text">
+                  <mat-form-field class="example-full-width width-200px ccnf-commission-number">
+                    <input matInput type="number" formControlName="ccnf_interUnitSalesCommission" />
+                  </mat-form-field>
+
+                </div>
+                <div class="width-200px">
+                  &nbsp;
+                </div>
+                <span class="text-danger error-message" style="width: auto;"
+                  *ngIf="(ccnfCommisionForm.controls['ccnf_interUnitSalesCommission'].touched) && ccnfCommisionForm.controls['ccnf_interUnitSalesCommission'].errors?.['required']">
+                  Inter Unit Sales Commission is required
+                </span>
+              </div>
+
+              <hr />
+
+              <div class="metro-commission">
+                <div class="metro-commision-item">
+                  <div class="slab-field-title width-200px">
+                    Other Depo Commission/ Deduction applicable?
+                  </div>
+                  <div class="slab-field-text">
+                    <mat-radio-group aria-label="Select an option"
+                      formControlName="ccnf_otherDepoCommissionDeductionApplicable">
+                      <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                      <mat-radio-button value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+
+                <div class="metro-commision-item commision-range">
+                  <div class="slab-field-title width-200px">
+                    Sales to Other Depo Commission
+                  </div>
+                  <div class="slab-field-text">
+                    <mat-form-field class="example-full-width width-200px ccnf-commission-number">
+                      <input matInput type="number" formControlName="ccnf_salestoOtherDepoCommission" />
+                    </mat-form-field>
+                  </div>
+                  <div class="width-200px">
+                    &nbsp;
+                  </div>
+                  <span class="text-danger error-message" style="width: auto;"
+                    *ngIf="(ccnfCommisionForm.controls['ccnf_salestoOtherDepoCommission'].touched) && ccnfCommisionForm.controls['ccnf_salestoOtherDepoCommission'].errors?.['required']">
+                    Sales to Other Depo Commission is required
+                  </span>
+
+
+                </div>
+
+                <div class="metro-commision-item commision-range">
+                  <div class="slab-field-title width-200px">
+                    Sales from Other Depo Commission
+                  </div>
+                  <div class="slab-field-text">
+                    <mat-form-field class="example-full-width width-200px ccnf-commission-number">
+                      <input matInput type="number" formControlName="ccnf_SalesFromOtherDepoCommission" />
+                    </mat-form-field>
+
+                  </div>
+                  <div class="width-200px">
+                    &nbsp;
+                  </div>
+                  <span class="text-danger error-message" style="width: auto;"
+                    *ngIf="(ccnfCommisionForm.controls['ccnf_SalesFromOtherDepoCommission'].touched) && ccnfCommisionForm.controls['ccnf_SalesFromOtherDepoCommission'].errors?.['required']">
+                    Sales from Other Depo Commission is required
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+      </form>
+      <div class="button-holder">
+        <div class="btn-left-section">
+          <!-- <button class="save-next-prev" (click)="moveToPrev()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="18px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#5f6368"
+            >
+              <path
+                d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+              />
+            </svg>
+            Previous
+          </button> -->
+        </div>
+
+        <div class="btn-right-section">
+          <div class="buttons loi-btns" *ngIf="!isDataSaved.isCCnFCommisionDataSaved">
+            <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true; saveCcnfCommision()"
+              [disabled]="!ccnfCommisionForm.valid">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#fff200">
+                <path
+                  d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z" />
+              </svg>
+              Save as Draft
+            </button>
+            <button class="save-next-prev" (click)="saveMoveToNext('commision')">
+              Save & Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+          <div class="buttons" *ngIf="isDataSaved.isCCnFCommisionDataSaved">
+            <div class="data-saved">CCnF Commision data is already saved!</div>
+            <button class="save-next-prev" (click)="goToNextTab()">
+              Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="Deduction on Direct Sales">
+      <form [formGroup]="dodSalesForm" class="margin-bottom-20px">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+
+            <div class="metro-commision-item">
+              <div class="slab-field-title align-item-center width-200px">
+                Dedcution on Direct Sales Applicable
+              </div>
+
+              <div class="slab-title-text">
+                <mat-radio-group aria-label="Select an option" formControlName="dod_salesApplicable">
+                  <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4 col-md-4">
+                <div class="ccnf-address-tittle align-item-center margin-top-15px">
+                  Slab Range
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-3">
+                <mat-form-field class="example-full-width margin-left-10px ccnf-commission-number">
+                  <input matInput type="number" formControlName="dod_SlabRangeFrom" />
+
+                </mat-form-field>
+                <span class="text-danger error-message" style="top: 0px;left:10px"
+                  *ngIf="(dodSalesForm.controls['dod_SlabRangeFrom'].touched) && dodSalesForm.controls['dod_SlabRangeFrom'].errors?.['required']">
+                  Slab range from is required
+                </span>
+              </div>
+              <div class="col-lg-1 col-md-1">
+                <span class="to">To</span>
+
+              </div>
+              <div class="col-lg-3 col-md-3">
+                <mat-form-field class="example-full-width ccnf-commission-number">
+                  <input matInput type="number" formControlName="dod_slabRangeTo" />
+                </mat-form-field>
+                <span class="text-danger error-message" style="top: 0px;left:0px"
+                  *ngIf="(dodSalesForm.controls['dod_slabRangeTo'].touched) && dodSalesForm.controls['dod_slabRangeTo'].errors?.['required']">
+                  Slab range to is required
+                </span>
+              </div>
+            </div>
+
+            <div class="slab-fields-saved" style="margin-top: 20px;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slab (MT)From</th>
+                    <th>Slab (MT)To</th>
+                    <th>Commission</th>
+                    <th class="width-50px">Add</th>
+                    <th class="width-50px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1000</td>
+                    <td>Rs. 25</td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-fab (click)="openLoiDetail()" class="add">
+                          <mat-icon>add</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-mini-fab aria-label="Add Button" class="delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <div class="col-lg-6 col-md-6 padding-left-20px left-border-orange">
+            <div class="metro-commision-item">
+              <div class="slab-field-title align-item-center width-200px">
+                Reduced Commission If order booking done by company?
+              </div>
+
+              <div class="slab-title-text">
+                <mat-radio-group aria-label="Select an option" formControlName="dod_reducedCommission">
+                  <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="metro-commision-item">
+              <div class="slab-field-title width-200px">Commission</div>
+              <div class="slab-field-text">
+                <mat-form-field class="example-full-width width-200px ccnf-commission-number">
+                  <input matInput type="number" formControlName="dod_commission" />
+
+                </mat-form-field>
+                <span class="text-danger error-message" style="top: 0px;left:0px"
+                  *ngIf="(dodSalesForm.controls['dod_commission'].touched) && dodSalesForm.controls['dod_commission'].errors?.['required']">
+                  Slab range to is required
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <hr />
+      <div class="button-holder">
+        <div class="btn-left-section">
+          <!-- <button class="save-next-prev" (click)="moveToPrev()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="18px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#5f6368"
+            >
+              <path
+                d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+              />
+            </svg>
+            Previous
+          </button> -->
+        </div>
+
+        <div class="btn-right-section">
+          <div class="buttons loi-btns" *ngIf="!isDataSaved.isDodSalesDataSaved">
+            <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true; saveDodSales()"
+              [disabled]="!dodSalesForm.valid">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#fff200">
+                <path
+                  d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z" />
+              </svg>
+              Save as Draft
+            </button>
+            <button class="save-next-prev" (click)="saveMoveToNext('sales')">
+              Save & Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+          <div class="buttons" *ngIf="isDataSaved.isDodSalesDataSaved">
+            <div class="data-saved">Deduction on direct sales data is already saved!</div>
+            <button class="save-next-prev" (click)="goToNextTab()">
+              Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="Godown Keeper Reimbursement">
+      <form [formGroup]="gkrForm" class="search-box-agent">
+        <div class="slab-commission-sec">
+          <div class="slab-sec">
+            <div class="metro-commision-item">
+              <div class="slab-field-title align-item-center width-200px">
+                Fixed rent for Godown Keeper applicable
+              </div>
+
+              <div class="slab-title-text">
+                <mat-radio-group aria-label="Select an option ccnf-commission-number" formControlName="gkr_fixedRent">
+                  <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="ccnf-address-tittle width-200px align-item-center">
+                  &lt; 3 Gates
+                </div>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width ccnf-commission-number">
+                  <input matInput type="number" formControlName="gkr_lesserThree" />
+                </mat-form-field>
+                <span class="text-danger error-message" style="top: 0px;left:0px"
+                  *ngIf="(gkrForm.controls['gkr_lesserThree'].touched) && gkrForm.controls['gkr_lesserThree'].errors?.['required']">
+                  Value is required
+                </span>
+              </div>
+            </div>
+            <div class="row margin-top-15px">
+              <div class="col-md-4">
+                <div class="ccnf-address-tittle width-200px align-item-center">
+                  &gt; 3 Gates
+                </div>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width ccnf-commission-number">
+                  <input matInput type="number" formControlName="gkr_greaterThree" />
+                </mat-form-field>
+                <span class="text-danger error-message" style="top: 0px;left:0px"
+                  *ngIf="(gkrForm.controls['gkr_greaterThree'].touched) && gkrForm.controls['gkr_greaterThree'].errors?.['required']">
+                  Value is required
+                </span>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </form>
+      <hr />
+      <div class="button-holder">
+        <div class="btn-left-section">
+          <!-- <button class="save-next-prev" (click)="moveToPrev()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="18px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#5f6368"
+            >
+              <path
+                d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+              />
+            </svg>
+            Previous
+          </button> -->
+        </div>
+
+        <div class="btn-right-section">
+          <div class="buttons loi-btns" *ngIf="!isDataSaved.isGkrDataSaved">
+            <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true; saveGkr()"
+              [disabled]="!gkrForm.valid">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#fff200">
+                <path
+                  d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z" />
+              </svg>
+              Save as Draft
+            </button>
+            <button class="save-next-prev" (click)="saveMoveToNext('gkr')">
+              Save & Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+          <div class="buttons" style="width:500px" *ngIf="isDataSaved.isGkrDataSaved">
+            <div class="data-saved">Godown Keeper Reimbursement data is already saved!</div>
+            <button class="save-next-prev" (click)="goToNextTab()">
+              Next
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#5f6368">
+                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Other Expense">
+      <form [formGroup]="otherExpenseForm" class="search-box-agent">
+        <div class="row">
+          <div class="col-lg-2 col-md-2">
+            <button (click)="openLoiDetail()" class="add-office">
+              Add/View Office
+            </button>
+          </div>
+          <div class="col-lg-2 col-md-2">
+            <mat-form-field appearance="outline" class="">
+              <mat-select placeholder="Depot" formControlName="oe_depot">
+                <mat-option value="volvo"> Depot 1 </mat-option>
+                <mat-option value="saab"> Depot 2 </mat-option>
+                <mat-option value="opel"> Depot 3 </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span class="text-danger error-message" style="top: -15px;left:0px"
+              *ngIf="(otherExpenseForm.controls['oe_depot'].touched) && otherExpenseForm.controls['oe_depot'].errors?.['required']">
+              Depot is required
+            </span>
+          </div>
+          <div class="col-lg-2 col-md-2">
+            <mat-form-field appearance="outline" class="">
+              <mat-select placeholder="12 District" multiple formControlName="oe_district">
+                <mat-option value="volvo"> 12 District </mat-option>
+                <mat-option value="saab"> 12 District </mat-option>
+                <mat-option value="opel"> 12 District </mat-option>
+                <mat-option value="volvo"> 12 District </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span class="text-danger error-message" style="top: -15px;left:0px"
+              *ngIf="(otherExpenseForm.controls['oe_district'].touched) && otherExpenseForm.controls['oe_district'].errors?.['required']">
+              District is required
+            </span>
+          </div>
+          <div class="col-lg-2 col-md-2">
+            <mat-form-field appearance="outline" class="">
+              <mat-select placeholder="Office" formControlName="oe_office">
+                <mat-option value="volvo"> Office 1 </mat-option>
+                <mat-option value="saab"> Office 2 </mat-option>
+                <mat-option value="opel"> Office 3 </mat-option>
+                <mat-option value="volvo"> Office 4 </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span class="text-danger error-message" style="top: -15px;left:0px"
+              *ngIf="(otherExpenseForm.controls['oe_office'].touched) && otherExpenseForm.controls['oe_office'].errors?.['required']">
+              Office is required
+            </span>
+          </div>
+
+          <div class="col-lg-2 col-md-2">
+            <button class="add-office2 right-align-item">
+              Add Office
+            </button>
+          </div>
+          <div class="col-lg-2 col-md-2">
+
+          </div>
+        </div>
+        <div class="slab-commission-sec">
+          <div class="search-box width-100pct">
+
+          </div>
+        </div>
+        <hr />
+        <div class="expense-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Expense Type</th>
+                <th>Applicable</th>
+                <th>Max Value</th>
+                <th>Sharing Percentage</th>
+              </tr>
+            </thead>
+            <tbody formArrayName="items" *ngFor="let item of otherExpenseForm.get('items')['controls']; let i = index;">
+              <tr [formGroupName]="i">
+                <td>
+                  {{item['controls']['oe_expenceType'].value }}
+                  <!-- {{ otherExpenseForm['controls'].items['controls'][i]['controls'].oe_expenceType.value }} -->
+                </td>
+                <td>
+                  <mat-radio-group aria-label="Select an option" formControlName="oe_isApplicable">
+                    <mat-radio-button value="Yes" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="No">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number" formControlName="oe_maxValue" />
+                  </mat-form-field>
+                  <span class="text-danger error-message" style="top:0px;left:7px"
+                    *ngIf="(item.controls['oe_maxValue'].touched) && item.controls['oe_maxValue'].errors?.['required']">
+                    Max value is required
+                  </span>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number" formControlName="oe_sharingPercentage" />
+                  </mat-form-field>
+                  %
+                  <span class="text-danger error-message" style="top:0px;left:7px"
+                    *ngIf="(item.controls['oe_sharingPercentage'].touched) && item.controls['oe_sharingPercentage'].errors?.['required']">
+                    Sharing percentage is required
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+      <hr />
+
+      <div class="button-holder">
+        <div class="btn-left-section">
+          <!-- <button class="save-next-prev" (click)="moveToPrev()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="18px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#5f6368"
+            >
+              <path
+                d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+              />
+            </svg>
+            Previous
+          </button> -->
+        </div>
+
+        <div class="btn-right-section">
+          <div class="buttons loi-btns">
+            <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true; saveOtherExpense()"
+              [disabled]="!otherExpenseForm.valid">
+              <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px"
+                fill="#fff200">
+                <path
+                  d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z" />
+              </svg>
+              Save as Draft
+            </button>
+            <button class="save-next-prev" (click)="saveMoveToNext('expense')">
+              Save & Submit
+              <!-- <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="18px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#5f6368"
+              >
+                <path
+                  d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                />
+              </svg> -->
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
